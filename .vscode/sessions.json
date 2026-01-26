@@ -1,0 +1,26 @@
+{
+  "$schema": "https://cdn.statically.io/gh/nguyenngoclongdev/cdn/main/schema/v11/terminal-keeper.json",
+  "theme": "tribe",
+  "active": "default",
+  "activateOnStartup": true,
+  "keepExistingTerminals": false,
+  "sessions": {
+    "default": [
+      [
+        {
+          "name": "dev",
+          "autoExecuteCommands": true,
+          "icon": "device-mobile",
+          "color": "terminal.ansiBlue",
+          "commands": ["npx expo start"]
+        },
+        {
+          "name": "cmd",
+          "icon": "terminal",
+          "color": "terminal.ansiBlue",
+          "commands": []
+        }
+      ]
+    ]
+  }
+}
