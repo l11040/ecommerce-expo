@@ -21,3 +21,10 @@ export type NativeResponse<T = unknown> = {
   isSuccess: boolean;
   result?: T;
 };
+
+// Native에서 WebView로 보내는 이벤트 메시지 타입
+export type NativeEvent<T = unknown> = {
+  type: "event";
+  eventName: string;
+  data?: T;
+};
