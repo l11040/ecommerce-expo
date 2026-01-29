@@ -1,6 +1,7 @@
 import { BridgeHandlerMap } from "../types";
 import { exitAppHandler } from "./exitApp";
 import { hapticHandler } from "./haptic";
+import { openAuthSessionHandler } from "./openAuthSession";
 import { openExternalUrlHandler } from "./openExternalUrl";
 
 // 브릿지 핸들러 등록
@@ -8,5 +9,6 @@ import { openExternalUrlHandler } from "./openExternalUrl";
 export const handlers: BridgeHandlerMap = {
   exitApp: exitAppHandler,
   haptic: hapticHandler,
+  openAuthSession: openAuthSessionHandler,
   openExternalUrl: openExternalUrlHandler,
 };

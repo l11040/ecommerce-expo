@@ -1,9 +1,9 @@
-import Constants from "expo-constants";
 import { StyleSheet, useColorScheme } from "react-native";
 import { WebView } from "react-native-webview";
 import { useNativeBridge } from "../bridge/useNativeBridge";
 
-const devServerIP = Constants.expoConfig?.hostUri?.split(":")[0];
+// const devServerIP = Constants.expoConfig?.hostUri?.split(":")[0];
+const devServerIP = "localhost";
 const uri = __DEV__ ? `http://${devServerIP}:3000` : "http://13.209.80.253";
 
 export function WebViewContainer() {

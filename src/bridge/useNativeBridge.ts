@@ -1,8 +1,8 @@
-import { useRef, useCallback } from "react";
+import { useCallback, useRef } from "react";
 import { WebView, WebViewMessageEvent } from "react-native-webview";
 import { useBackPress } from "./events";
 import { handlers } from "./handlers";
-import { NativeMessage, NativeResponse, NativeEvent } from "./types";
+import { NativeEvent, NativeMessage, NativeResponse } from "./types";
 
 /**
  * WebView-Native 브릿지 훅
@@ -13,7 +13,9 @@ export function useNativeBridge() {
 
   // WebView로 응답 전송
   const sendResponse = useCallback(<T>(response: NativeResponse<T>) => {
-    webViewRef.current?.postMessage(JSON.stringify(response));
+    webViewRef.current?.postMessage(
+      JSON.stringify({ type: "response", ...response }),
+    );
   }, []);
 
   // WebView로 이벤트 전송
@@ -22,7 +24,7 @@ export function useNativeBridge() {
     webViewRef.current?.postMessage(JSON.stringify(event));
   }, []);
 
-  // Android 백 버튼 이벤트 등록
+  // 이벤트 등록
   useBackPress(sendEvent);
 
   // WebView에서 오는 메시지 처리
@@ -59,7 +61,7 @@ export function useNativeBridge() {
         });
       }
     },
-    [sendResponse]
+    [sendResponse],
   );
 
   return {
