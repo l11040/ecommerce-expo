@@ -3,9 +3,10 @@ import { StyleSheet, useColorScheme } from "react-native";
 import { WebView } from "react-native-webview";
 import { useNativeBridge } from "../bridge/useNativeBridge";
 
-const devServerIP = Constants.expoConfig?.hostUri?.split(":")[0];
+const userAgent = `${Constants.expoConfig?.name}/${Constants.expoConfig?.version}`;
 // const devServerIP = "localhost";
 // const devServerIP = "192.168.0.90";
+const devServerIP = Constants.expoConfig?.hostUri?.split(":")[0];
 const uri = __DEV__ ? `http://${devServerIP}:3000` : "http://13.209.80.253";
 
 export function WebViewContainer() {
@@ -20,6 +21,7 @@ export function WebViewContainer() {
       style={[styles.webview, { backgroundColor }]}
       onMessage={handleMessage}
       webviewDebuggingEnabled={__DEV__}
+      userAgent={userAgent}
     />
   );
 }
